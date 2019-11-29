@@ -1,0 +1,21 @@
+{
+  "name": "SERVER",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "json-server --watch db.json --port 5000",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pillarorigin/todo-app-back.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pillarorigin/todo-app-back/issues"
+  },
+  "homepage": "https://github.com/pillarorigin/todo-app-back#readme"
+}
