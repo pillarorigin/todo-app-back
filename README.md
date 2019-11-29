@@ -1,6 +1,6 @@
 # todo-app-back
 
-DIY_server : todo-app-back (express-mongodb)
+DIY_server : express-mongodb
 ```
   model
     todos.js
