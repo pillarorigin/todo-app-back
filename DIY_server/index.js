@@ -12,11 +12,12 @@ const app = express();
 app.use(express.json()); //date를 body에 담아 POST request로 보내기 위한 body-parser.
 
 //  4. mongodb Access
-const mongoURL = 'mongodb://localhost/welcome'
+const dbURI = process.env.MONGODB_URI ||  'mongodb://localhost/welcome'
 
 //  5. mongodb connect
 app.use((req, res, next) => {
-    mongoose.connect(mongoURL, {
+    console.log('mongoose try connecting')
+    mongoose.connect(dbURI, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useCreateIndex: true,
@@ -27,7 +28,9 @@ app.use((req, res, next) => {
             next() //router로직 수행후 여기로 다시 옴.
 
         })
+        .catch(e => next(e));
 })
+
 //  8.1 mongodb connect 이후 실행 되야 하므로 connect 로직 다음 줄에 작성
 app.use('/api/todos', routes_todos); //'localhost/api/todos' 로 url 요청이 오면 routes 폴더의 todos.js로 경로 이등.
 

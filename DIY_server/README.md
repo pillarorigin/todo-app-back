@@ -36,20 +36,23 @@ API
         8-1. mongodb connect 이후 실행할 router
     ```
 
-4. model / todos.js 작성
+4. model / todos.js(mongoose Schema) 작성
     ```bash
         1. mongoose require
-        2. module.exports 
+        2. module.exports = {}
             (validate로직 등 공통 함수와 모델 들, module.exports = { Todos }: router에서 디스트럭처링해줘야 오브젝트 형태로 exports 가능)
-        3. create Schema
+        3. create Schema 
+            (object 형태로 사용하면 type, valitate 등 사용 가능)
         4. create model
-        5. 
+            (const Todos = mongoose.model('todos', todosSchema);)
+        5. Joi Validate
     ```
 
 5. routes / todos.js 작성
     ```js
-        1. express require, exports한 modules require //const { Todos } = require('../model/todos');
-        2. router Declaration
+        1. express require, exports한 modules require
+            //const { Todos } = require('../model/todos');
+        2. router Declaration, module.exports
         3. router url setting(GET)  //app.use('/api/todos', routes_todos);
         4. router url setting(POST)
             4-1. req.body 가져와서
@@ -57,4 +60,17 @@ API
             4-3. instance mongoDB에 save
         5. router url setting(PATCH)
         6. router url setting(DELETE)
+    ```
+
+
+6. @hapi/joi 모듈 사용해서 validate
+    ```bash
+        $ yarn add @hapi/joi
+    ```
+    validate 로직 추가 
+
+7. common / wrapper.js 작성 
+    (비동기 상에서 try, catch 쉽게하기 위해 wrapper로 감싸기.)
+    ```js
+
     ```
