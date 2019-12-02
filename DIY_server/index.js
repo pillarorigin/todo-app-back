@@ -1,6 +1,8 @@
 //  1. express require
 const express = require('express');
 const mongoose = require('mongoose');
+const helmet = require('helmet');
+const cors = require('cors');
 
 //  7. router call
 const routes_todos = require('./routes/todos');
@@ -13,6 +15,10 @@ app.use(express.json()); //date를 body에 담아 POST request로 보내기 위�
 
 //  4. mongodb Access
 const dbURI = process.env.MONGODB_URI ||  'mongodb://localhost/welcome'
+
+//  9. middelware
+app.use(helmet());
+app.use(cors());
 
 //  5. mongodb connect
 app.use((req, res, next) => {

@@ -34,6 +34,8 @@ API
         7. router call 
         8. middleware (body-parser, router url: http://localhost/api/todos)
         8-1. mongodb connect 이후 실행할 router
+        9. middleware
+            $ yarn add cors helmet
     ```
 
 4. model / todos.js(mongoose Schema) 작성

@@ -17,6 +17,7 @@ router.get('/', wrapper(async (req, res, next)=>{
 //  4. router url setting (POST)
 router.post('/', wrapper(async (req, res, next) => {
     //  4.1 req.body => validate 확인
+    // console.log(validateTodo(req.body).error);
     if(validateTodo(req.body).error) {
         res.status(400).json({result: false, error:'양식에 맞지 않습니다'});
         next();
@@ -24,11 +25,12 @@ router.post('/', wrapper(async (req, res, next) => {
     }
     //  DB 등록: model -> 새로운 인스턴스 + save()
     const { content } = req.body;
+    console.log(content);
     //  4.2 create instance
-    const todos = new Todos({ content })
+    const targetTodos = new Todos({ content })
     //  4.3 mongodb에 save
-    await todos.save();
-    res.json({ result : true });
+    const todos = await targetTodos.save();
+    res.json({ todos });
     next();
 }))
 

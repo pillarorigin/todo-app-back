@@ -2,8 +2,7 @@
 const mongoose = require('mongoose');
 const Joi = require('@hapi/joi');
 
-const {Schema, model} = mongoose;
-
+// const {Schema, model} = mongoose;
 //  3. create Schema
 const todosSchema = new mongoose.Schema({
     // id: {
