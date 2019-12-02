@@ -69,6 +69,8 @@
             5-1. mongoose model중 updataOne 사용
             5-2. mongodb에 _id와 req.params.id 일치하면 수정
         6. router url setting(DELETE)
+            6-1. mongoose model중 deleteOne 사용
+            6-2. mongodb에 _id와 req.params.id 일치하면 삭제
     ```
 
 
@@ -83,3 +85,12 @@
     ```js
 
     ```
+
+8. 사용자 인증 부분 authentication -> 서버 쪽에서 
+    [bcrypt] : https://www.npmjs.com/package/bcrypt
+    ```
+        bcrypt hash salt > jwt > 
+        $ yarn add bcrypt
+    ```
+    
+9. 
