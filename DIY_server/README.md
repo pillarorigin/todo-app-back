@@ -1,7 +1,7 @@
-### express-mongodb server
+# express-mongodb server
 
-명세
-API
+### 명세
+1. API
     - url : /api/todos
     - method
         - GET
@@ -17,8 +17,10 @@ API
                 - completed만 수정 가능하면 OK
         - DELETE
             - /api/todos/:id :id에 해당하는 todo를 삭제한다.
+2. Resource
+     resource라는 단어는 웝페이지(html), binary data(그림파일, 소리파일 등), db data(json/xml/혹은 html로 render된 data)등 서버가 제공할 수 있는 데이터.
 
-
+### 프로젝트 생성
 1. $ npm init -y
 
 2. $ yarn add express mongoose nodemon body-parser
@@ -55,12 +57,17 @@ API
         1. express require, exports한 modules require
             //const { Todos } = require('../model/todos');
         2. router Declaration, module.exports
-        3. router url setting(GET)  //app.use('/api/todos', routes_todos);
+        3. router url setting(GET)  
+            //app.use('/api/todos', routes_todos);
+            //주소 url 뒤에 :/값은 req.params에 저장
         4. router url setting(POST)
+            //주소 url과 함께 보낸 데이터는 req.body에 저장. (body parser 사용)
             4-1. req.body 가져와서
             4-2. Declaration schema 형태로 create instance
             4-3. instance mongoDB에 save
         5. router url setting(PATCH)
+            5-1. mongoose model중 updataOne 사용
+            5-2. mongodb에 _id와 req.params.id 일치하면 수정
         6. router url setting(DELETE)
     ```
 
