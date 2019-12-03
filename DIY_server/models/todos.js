@@ -10,18 +10,18 @@ const todosSchema = new mongoose.Schema({
     //     required : true,
     //     unique : true
     // },
-    content : {
-        type : String,
-        minlength : 2,
-        maxlength : 100
+    content: {
+        type: String,
+        minlength: 2,
+        maxlength: 100
     },
-    completed : {
-        type : Boolean,
-        default : false
-    } ,
-    created_at : {
-        type : Date,
-        default : Date.now
+    completed: {
+        type: Boolean,
+        default: false
+    },
+    created_at: {
+        type: Date,
+        default: Date.now
     }
 })
 

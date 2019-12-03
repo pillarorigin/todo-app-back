@@ -1,6 +1,6 @@
 //  1. express require
 const express = require('express');
-const { Todos, validateTodo } = require('../model/todos');
+const { Todos, validateTodo } = require('../models/todos');
 const wrapper = require('../common/wrapper');
 
 //  2. router Declaration
@@ -34,9 +34,9 @@ router.post('/', wrapper(async (req, res, next) => {
 
 //  5. patch (체크박스 선택 on/off)
 router.patch('/:id', wrapper(async (req, res, next) => {
-    await Todos.updateOne({_id : req.params.id}, req.body);
+    await Todos.updateOne({ _id: req.params.id }, req.body);
     console.log(req.body); //{ completed: false }
-    res.json({result :true});
+    res.json({ result: true });
     next();
 }));
 

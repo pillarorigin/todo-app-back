@@ -78,7 +78,7 @@
     ```bash
         $ yarn add @hapi/joi
     ```
-    validate 로직 추가 
+    validate 로직 추가
 
 7. common / wrapper.js 작성 
     (비동기 상에서 try, catch 쉽게하기 위해 wrapper로 감싸기.)
@@ -86,11 +86,44 @@
 
     ```
 
-8. 사용자 인증 부분 authentication -> 서버 쪽에서 
+8. 사용자 인증 부분 authentication -> 서버 쪽에서 다룰 예정 (hash.js 작성)
     [bcrypt] : https://www.npmjs.com/package/bcrypt
+    bcrypt hash salt > jwt >
+    ```js
+        1. $ yarn add bcrypt //return값이 promise
+        2. salt
+        3. hash
+        4. 실행 : node hash.js
     ```
-        bcrypt hash salt > jwt > 
-        $ yarn add bcrypt
+
+9. mondel, routes에 각각 users.js 작성
+    ```js
+        //model / users.js
+        1. express와 module 선언
+        2. Schema 선언
+        3. model 생성
+        4. module.exports={}
+        5. validate
+            5.1 Joi Schema 선언
+            5.2 return schema.validate(user를 인자로 받음)
+
+        //routes / users.js
+        1. express와 router 실행
+        2. Router가 무슨 일을 할 지 정해준다 (http methods)
+            2.1 정보 확인 : req.body
+            2.2 validate
+            2.3 저장 : mongoose model
+                2.3.1 암호화 : bcrypt.hash()사용
+                2.3.2 저장할 Uset instance 생성
+                2.3.3 저장
+        3. get
+        4. patch
+        5. delete
+        
+        7. module.exports = router; (밖으로 내보내기)
+
+        // index.js
+        1. user router 부르고 app.use로 사용한다 명시
+            app.use('/auth', routes_users);
+
     ```
-    
-9. 
