@@ -127,3 +127,5 @@
             app.use('/auth', routes_users);
 
     ```
+
+10. express passport/jwt를 이용한 authentication 구현
